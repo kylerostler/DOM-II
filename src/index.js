@@ -2,6 +2,12 @@ import './less/index.less'
 
 // Your code goes here!
 const links = document.querySelectorAll('nav a');
+links.forEach(link => {
+    link.addEventListener('click', function(event){
+        event.preventDefault();
+        console.log('Sorry links broken');
+    })
+})
 const navLinks = Array.from(links);
 //4 links
 function greenText() {
@@ -31,8 +37,9 @@ function purpleBox() {
     event.target.style.backgroundColor = 'purple';
 };
 signButtons[0].addEventListener('cut', purpleText);
-signButtons[1].addEventListener('', purpleBox);
-signButtons[2].addEventListener('', purpleText);
+signButtons[1].addEventListener('mouseout', purpleBox);
+signButtons[2].addEventListener('mouseleave', purpleText);
+
 
 
 const copyright = document.querySelector('.footer p');
@@ -44,7 +51,15 @@ copyright.addEventListener('click', blueText);
 
 
 
-const funBus = document.querySelector('.logo-heading');
-//fun bus heading
-
-
+// const funBus = document.querySelector('.logo-heading');
+// //fun bus heading
+function blackBackground(event) {
+    if (event.key === 'b'){
+    document.body.style.backgroundColor = 'black'};
+};
+function whiteBackground(event) {
+    if (event.key === 'w'){
+    document.body.style.backgroundColor = 'white'};
+};
+document.addEventListener('keydown', blackBackground);
+document.addEventListener('keyup', whiteBackground);
